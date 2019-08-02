@@ -15,8 +15,7 @@ def guess_the_number_game(num, attempts, attempt=1):
         user_answer = int(input('Угадайте число от 0 до 100: '))
 
         if user_answer == num:
-            print('Вы угадали!')
-            exit(0)
+            return 'Вы угадали!'
         if user_answer < num:
             print(f'Загаданное число больше {user_answer}')
         else:
@@ -24,10 +23,9 @@ def guess_the_number_game(num, attempts, attempt=1):
     except ValueError:
         print('Ошибка! Необходимо ввести целое число от 0 до 100')
     if attempt < attempts:
-        guess_the_number_game(num, attempts, attempt + 1)
+        return guess_the_number_game(num, attempts, attempt + 1)
     else:
-        print(f'Вы проиграли. Было загадано число {num}')
-        exit(0)
+        return f'Вы проиграли. Было загадано число {num}'
 
 
 random_number = random.randint(0, 100)
