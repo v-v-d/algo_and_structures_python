@@ -13,6 +13,13 @@ def count_of_digit_in_num(num, desired_digit, result=0):
     return count_of_digit_in_num(num, desired_digit, result) if num else result
 
 
+def get_num_from_user(num_of_nums, num_of_num=1, result=0):
+    num = int(input(f'Введите число №{num_of_num}: '))
+    result += count_of_digit_in_num(num, desired_digit)
+    num_of_nums -= 1
+    return get_num_from_user(num_of_nums, num_of_num + 1,  result) if num_of_nums else result
+
+
 try:
     num_of_nums = int(input('Сколько чисел хотите ввести?: '))
 
@@ -23,10 +30,7 @@ try:
         else:
             break
 
-    result = 0
-    for i in range(num_of_nums):
-        num = int(input(f'Введите число №{i + 1}: '))
-        result += count_of_digit_in_num(num, desired_digit)
+    result = get_num_from_user(num_of_nums)
 
     print(f'Цифра {desired_digit} встречается в данной последовательности чисел {result} раз')
 except ValueError:
