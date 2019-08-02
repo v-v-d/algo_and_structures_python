@@ -42,29 +42,29 @@ def get_calc():
 
 get_calc()
 
-# # Цикл
-# while True:
-#     operator = input('Введите оператор или 0, чтобы выйти: ')
-#     if operator == '0':
-#         break
-#
-#     try:
-#         if operator in ('/', ':', '*', '+', '-'):
-#             num_1 = float(input('Введите первое число: '))
-#             num_2 = float(input('Введите второе число: '))
-#
-#             if operator in ('/', ':'):
-#                 print(f'Результат деления: {num_1 / num_2}') if num_2 != 0 else print('Ошибка! Делить на 0 нельзя')
-#
-#             if operator == '*':
-#                 print(f'Результат умножения: {num_1 * num_2}')
-#
-#             if operator == '+':
-#                 print(f'Результат сложения: {num_1 + num_2}')
-#
-#             if operator == '-':
-#                 print(f'Результат вычитания: {num_1 - num_2}')
-#         else:
-#             print('Вы ввели некорректный оператор')
-#     except ValueError:
-#         print('Необходимо ввести число. Разделитель - точка')
+# Цикл
+while True:
+    operator = input('Введите оператор или 0, чтобы выйти: ')
+    if operator == '0':
+        break
+
+    try:
+        if operator in ('/', ':', '*', '+', '-'):
+            num_1 = float(input('Введите первое число: '))
+            num_2 = float(input('Введите второе число: '))
+
+            if operator in ('/', ':'):
+                print(f'Результат деления: {num_1 / num_2}') if num_2 != 0 else print('Ошибка! Делить на 0 нельзя')
+
+            if operator == '*':
+                print(f'Результат умножения: {num_1 * num_2}')
+
+            if operator == '+':
+                print(f'Результат сложения: {num_1 + num_2}')
+
+            if operator == '-':
+                print(f'Результат вычитания: {num_1 - num_2}')
+        else:
+            print('Вы ввели некорректный оператор')
+    except ValueError:
+        print('Необходимо ввести число. Разделитель - точка')
