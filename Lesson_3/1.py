@@ -4,5 +4,5 @@
 lst = [i for i in range(2, 100)]
 
 for i in range(2, 10):
-    total_of_nums = len([num for num in lst if num % i == 0])
-    print(f'В диапазоне от 2 до 99 {total_of_nums} чисел кратны {i}')
+    nums_qty = len([num for num in lst if num % i == 0])
+    print(f'В диапазоне от 2 до 99 {nums_qty} чисел кратны {i}')
