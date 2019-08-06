@@ -7,6 +7,6 @@
 """
 import random
 
-lst = [random.randint(-10, 10) for i in range(20)]
+lst = [random.randint(-10, 10) for _ in range(20)]
 
 lst_even_num_indices = [i for i, num in enumerate(lst) if num % 2 == 0 and num != 0]

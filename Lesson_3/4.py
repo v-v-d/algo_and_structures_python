@@ -1,7 +1,7 @@
 # 4.	Определить, какое число в массиве встречается чаще всего.
 import random
 
-lst = [random.randint(-10, 10) for i in range(20)]
+lst = [random.randint(-10, 10) for _ in range(20)]
 
 checked_nums = []
 max_num_qty = 0

@@ -5,7 +5,7 @@
 """
 import random
 
-lst = [random.randint(-50, 50) for i in range(20)]
+lst = [random.randint(-50, 50) for _ in range(20)]
 
 min_num, max_num = lst[0], lst[0]
 min_idx, max_idx = 0, 0

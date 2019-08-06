@@ -2,7 +2,7 @@
 # и максимальный элементы.
 import random
 
-lst = [random.randint(-10, 10) for i in range(20)]
+lst = [random.randint(-10, 10) for _ in range(20)]
 
 print(lst)
 
