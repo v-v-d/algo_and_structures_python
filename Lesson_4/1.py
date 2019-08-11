@@ -5,29 +5,30 @@
 """
 import timeit
 import cProfile
+import random
 
 
 # Рекурсия
 def get_ascii_table_recursively(from_symbol, to_symbol, output_str=''):
     for i in range(from_symbol, to_symbol):
-        if i <= LAST_ASCII_NUM:
+        if i <= 127:
             output_str += f'{i} - {chr(i)} '
     print(output_str)
-    if to_symbol < LAST_ASCII_NUM:
-        return get_ascii_table_recursively(from_symbol + STEP, to_symbol + STEP)
+    if to_symbol < 127:
+        return get_ascii_table_recursively(from_symbol + 10, to_symbol + 10)
 
 
 # Цикл
 def get_ascii_string(from_symbol, to_symbol, output_str=''):
     for i in range(from_symbol, to_symbol):
-        if i <= LAST_ASCII_NUM:
+        if i <= 127:
             output_str += f'{i} - {chr(i)} '
     return output_str
 
 
 def get_ascii_table_circle(from_symbol, to_symbol, step):
     for i in range(from_symbol, to_symbol + 1, step):
-        print(get_ascii_string(i, i + step))
+        print(get_ascii_string(i, i + 10))
 
 
 def main():
@@ -35,8 +36,48 @@ def main():
     get_ascii_table_circle(32, 127, 10)
 
 
-LAST_ASCII_NUM = 127
-STEP = 10
+def get_most_often_num_in_list_1(lst):
+    checked_nums = []
+    max_num_qty = 0
+    most_often_num = lst[0]
+    for num in lst:
+        if num not in checked_nums:
+            checked_nums.append(num)
+            num_qty = len([el for el in lst if el == num])
+            if num_qty > max_num_qty:
+                max_num_qty = num_qty
+                most_often_num = num
+    return most_often_num
+
+
+def get_most_often_num_in_list_2(lst):
+    checked_nums = []
+    max_num_qty = 0
+    most_often_num = lst[0]
+    for num in lst:
+        if num not in checked_nums:
+            checked_nums.append(num)
+            if lst.count(num) > max_num_qty:
+                max_num_qty = lst.count(num)
+                most_often_num = num
+    return most_often_num
+
+
+lst = [random.randint(-10, 10) for _ in range(20)]
+
+print(timeit.timeit('get_most_often_num_in_list_1(lst)',
+                    setup='from __main__ import get_most_often_num_in_list_1, lst',
+                    number=1000))
+
+print(timeit.timeit('get_most_often_num_in_list_2(lst)',
+                    setup='from __main__ import get_most_often_num_in_list_2, lst',
+                    number=1000))
+
+# результаты работы функции timeit:
+# get_most_often_num_in_list_1 без использованиея функции .count():
+# 0.021129100000000012
+# get_most_often_num_in_list_2 с использованием функции .count():
+# 0.009946699999999975
 
 print(timeit.timeit('get_ascii_table_recursively(32, 32 + 10)',
                     setup='from __main__ import get_ascii_table_recursively',
@@ -47,9 +88,9 @@ print(timeit.timeit('get_ascii_table_circle(32, 127, 10)',
                     number=1000))
 
 # результаты работы функции timeit:
-# Рекурсия:
+# get_ascii_table_recursively с рекурсией:
 # 0.1495039
-# Цикл:
+# get_ascii_table_circle с циклом:
 # 0.15628540000000002
 
 cProfile.run('main()')
