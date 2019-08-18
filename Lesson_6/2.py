@@ -5,6 +5,8 @@
 атрибутов. Сравнить, сколько выделяется памяти для хранения атрибутов обоих
 классов.
 """
+import random
+from pympler import asizeof
 
 
 class HexOperation1:
@@ -33,9 +35,22 @@ class HexOperation2:
         return list(hex(int(''.join(self.num_first), 16) * int(''.join(other.num_second), 16)))[2:]
 
 
-hex_num_first = list(input('Введите первое шеснадцатиричное число: '))
-hex_num_second = list(input('Введите второе шеснадцатиричное число: '))
+hex_num_first = f'{random.randrange(16**10):10x}'.upper()
+hex_num_second = f'{random.randrange(16**10):10x}'.upper()
 
-res_sum = HexOperation1(hex_num_first, hex_num_second) + HexOperation1(hex_num_first, hex_num_second)
-res_mul = HexOperation1(hex_num_first, hex_num_second) * HexOperation1(hex_num_first, hex_num_second)
-print(f'Сумма чисел = {res_sum}\nПроизведение чисел = {res_mul}')
+obj_1 = HexOperation1(hex_num_first, hex_num_second)
+print(obj_1.__dict__)
+print(asizeof.asizeof(obj_1))
+
+obj_2 = HexOperation2(hex_num_first, hex_num_second)
+print(obj_2.__slots__)
+print(asizeof.asizeof(obj_2))
+
+# {'num_first': '2D8CB4B740', 'num_second': '78B3E92069'}
+# 264
+# ('num_first', 'num_second')
+# 112
+
+# Вывод:
+# Использование __slots__ уменьшает кол-во потребляемой памяти экземпляром класса. В данном случае вместо словаря
+# атрибуты храняться в кортеже.

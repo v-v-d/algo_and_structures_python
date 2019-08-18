@@ -21,3 +21,12 @@ python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy
 7 objgraph - набор функций для поиска утечки памяти в программе на Python.
 pip install objgraph
 
+8 Использование __slots__ в парадигме ООП, если кол-во атрибутов в классе изменяться не будет. Вместо словаря атрибуты
+будут храниться в другом типе данных, который будет задан при переопределении __slots__
+class HexOperation:
+    __slots__ = ('num_first', 'num_second')
+
+    def __init__(self, num_first, num_second):
+        self.num_first = num_first
+        self.num_second = num_second
+
