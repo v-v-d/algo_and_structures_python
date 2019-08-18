@@ -39,12 +39,35 @@ def get_most_common_in_list_3(lst):
     return max(set(lst), key=lst.count)
 
 
+@profile
+def get_reverse_number_1(num, reverse_number=''):
+    reverse_number += str(num % 10)
+    num //= 10
+    if num:
+        return get_reverse_number_1(num, reverse_number)
+    return int(reverse_number)
+
+
+@profile
+def get_reverse_number_2(num):
+    reverse_num = ''
+    while num:
+        reverse_num += str(num % 10)
+        num //= 10
+    return int(reverse_num)
+
+
 if __name__ == '__main__':
     lst = [random.randint(-100, 100) for _ in range(100000)]
 
     get_most_common_in_list_1(lst)
     get_most_common_in_list_2(lst)
     get_most_common_in_list_3(lst)
+
+    random_int = random.randint(10 ** 10, 10 ** 20)
+
+    get_reverse_number_1(random_int)
+    get_reverse_number_2(random_int)
 
     # Результат работы функции profile модуля memory_profile:
     #
@@ -102,12 +125,17 @@ if __name__ == '__main__':
     # 4.170727500000002
 
     # Выводы:
-    # По результатам работы memory_profile видно, что первая функция требует больше памяти, чем остальные 2. Особенно
-    # это заметно на строчках 20-24, где потребление памяти начинает расти. Список checked_nums в функции занимает
-    # 20 Кбайт если замерить его через asizeof.asizeof(checked_nums)) при поиске в 1000 элементах. А также через
-    # генератор создаются промежуточные списки, для подсчета суммы элементов в нем. Эти места в функции требуют
-    # доработки.
-    # Остальные 2 функции потребляют одинаковое количество памяти.
+    # По результатам работы memory_profile видно, что функция get_most_common_in_list_1 требует больше памяти, чем
+    # get_most_common_in_list_2 и get_most_common_in_list_3. Особенно это заметно на строчках 20-24, где потребление
+    # памяти начинает расти. Список checked_nums в функции занимает 20 Кбайт если замерить его в теле функции через
+    # asizeof.asizeof(checked_nums)) при поиске в 1000 элементах. А также через генератор создаются промежуточные
+    # списки, для подсчета суммы элементов в нем. Эти места в функции требуют доработки.
+    # Функции get_most_common_in_list_2 и get_most_common_in_list_3 потребляют одинаковое количество памяти.
+    # Вывод результатов работы функции profile с функциями get_reverse_number_1 и get_reverse_number_2 я включать в
+    # отчет не стал, он слишком длинный из-за рекурсивной функции. Они обе потребляют одинаковое кол-во памяти при
+    # одноразовом вызове, только в функции с рекурсией есть небольшой инкремент при вызове самой рекурсии.
+
     # Замер по времени отрабатывания функций хоть был и не нужен по заданию, но мне стало интересно какой вариант
-    # работает быстрее. В результате замеров видно, что метод most_common типа данных Counter модуля collections
-    # выигрывает по всем параметрам стандартные и самописные функции при поиске самого частого элемента в списке.
+    # функции get_most_common_in_list работает быстрее. В результате замеров видно, что метод most_common типа данных
+    # Counter модуля collections выигрывает по всем параметрам стандартные и самописные функции при поиске самого
+    # частого элемента в списке.
