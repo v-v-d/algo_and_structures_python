@@ -39,7 +39,8 @@ def merge_sort(lst):
         return lst
 
 
-random_list = [round(random.uniform(0, 50), 2) for _ in range(27)]
+if __name__ == '__main__':
+    random_list = [round(random.uniform(0, 50), 2) for _ in range(27)]
 
-print(random_list)
-print(merge_sort(random_list))
+    print(random_list)
+    print(merge_sort(random_list))
