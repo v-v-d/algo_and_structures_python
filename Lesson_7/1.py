@@ -28,6 +28,7 @@ if __name__ == '__main__':
 
     print('На входе рандомный список:')
     print(random_list_1)
+    print('Отсортированный список')
     print(bubble_sort(random_list_1))
     print(timeit.timeit('bubble_sort(random_list_1)',
                         setup='from __main__ import bubble_sort, random_list_1',
@@ -35,6 +36,7 @@ if __name__ == '__main__':
 
     print('На входе отсортированный список:')
     print(random_list_2)
+    print('Отсортированный список')
     print(bubble_sort(random_list_2))
     print(timeit.timeit('bubble_sort(random_list_2)',
                         setup='from __main__ import bubble_sort, random_list_2',
@@ -42,6 +44,7 @@ if __name__ == '__main__':
 
     print('На входе список, в котором надо сделать одну замену:')
     print(random_list_3)
+    print('Отсортированный список')
     print(bubble_sort(random_list_3))
     print(timeit.timeit('bubble_sort(random_list_3)',
                         setup='from __main__ import bubble_sort, random_list_3',
