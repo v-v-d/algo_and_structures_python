@@ -39,7 +39,7 @@ def merge_sort(lst):
         return lst
 
 
-random_list_1 = [random.randint(0, 50) for _ in range(27)]
+random_list = [round(random.uniform(0, 50), 2) for _ in range(27)]
 
-print(random_list_1)
-print(merge_sort(random_list_1))
+print(random_list)
+print(merge_sort(random_list))
