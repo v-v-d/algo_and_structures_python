@@ -21,27 +21,28 @@ def bubble_sort(lst):
     return sorted_list
 
 
-random_list_1 = [random.randint(-100, 100) for _ in range(27)]
-random_list_2 = [27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-random_list_3 = [26, 27, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+if __name__ == '__main__':
+    random_list_1 = [random.randint(-100, 100) for _ in range(27)]
+    random_list_2 = [27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+    random_list_3 = [26, 27, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 
-print('На входе рандомный список:')
-print(random_list_1)
-print(bubble_sort(random_list_1))
-print(timeit.timeit('bubble_sort(random_list_1)',
-                    setup='from __main__ import bubble_sort, random_list_1',
-                    number=1000))
+    print('На входе рандомный список:')
+    print(random_list_1)
+    print(bubble_sort(random_list_1))
+    print(timeit.timeit('bubble_sort(random_list_1)',
+                        setup='from __main__ import bubble_sort, random_list_1',
+                        number=1000))
 
-print('На входе отсортированный список:')
-print(random_list_2)
-print(bubble_sort(random_list_2))
-print(timeit.timeit('bubble_sort(random_list_2)',
-                    setup='from __main__ import bubble_sort, random_list_2',
-                    number=1000))
+    print('На входе отсортированный список:')
+    print(random_list_2)
+    print(bubble_sort(random_list_2))
+    print(timeit.timeit('bubble_sort(random_list_2)',
+                        setup='from __main__ import bubble_sort, random_list_2',
+                        number=1000))
 
-print('На входе список, в котором надо сделать одну замену:')
-print(random_list_3)
-print(bubble_sort(random_list_3))
-print(timeit.timeit('bubble_sort(random_list_3)',
-                    setup='from __main__ import bubble_sort, random_list_3',
-                    number=1000))
+    print('На входе список, в котором надо сделать одну замену:')
+    print(random_list_3)
+    print(bubble_sort(random_list_3))
+    print(timeit.timeit('bubble_sort(random_list_3)',
+                        setup='from __main__ import bubble_sort, random_list_3',
+                        number=1000))
